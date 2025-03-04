@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\{Route, Auth};
 // disable register, reset password
 Auth::routes(['register' => false, 'reset' => false]);
 
+// jika ke /, redirect ke /login
+Route::redirect('/', '/login');
+
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
