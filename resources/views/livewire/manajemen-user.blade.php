@@ -55,6 +55,18 @@ new class extends Component {
             $this->dispatch('errorAlertToast', $e->getMessage());
         }
     }
+
+    // function delete user
+    public function delete($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            $this->dispatch('deleteAlertToast', 'User deleted successfully');
+        } else {
+            $this->dispatch('errorAlertToast', 'User not found');
+        }
+    }
 }; ?>
 
 <div>
@@ -100,7 +112,7 @@ new class extends Component {
                                 </td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary m-1">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger m-1">Delete</a>
+                                    <button type="button" class="btn btn-sm btn-danger m-1" wire:click="delete({{ $user->id }})">Delete</button>
                                 </td>
                             </tr>
                             @endforeach
