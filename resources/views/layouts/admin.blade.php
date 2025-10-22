@@ -7,18 +7,58 @@
     </title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="{{ url('/') }}/assets/img/logo/favicon.ico" type="image/x-icon" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <script src="{{ url('/') }}/assets/js/plugin/webfont/webfont.min.js" data-navigate-track></script>
-
-    <!-- CSS Files -->
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/fonts.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/plugins.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/assets/css/kaiadmin.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/png" href="{{ url('/') }}/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ url('/') }}/favicon.svg" />
+    <link rel="shortcut icon" href="{{ url('/') }}/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('/') }}/apple-touch-icon.png" />
+    <link rel="manifest" href="{{ url('/') }}/site.webmanifest" />
     @livewireStyles
+    <style>
+        :root {
+            --ui-font: "Poppins", sans-serif;
+        }
+
+        html,
+        body,
+        button,
+        input,
+        select,
+        textarea {
+            font-family: var(--ui-font) !important;
+        }
+
+        body {
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Headings and brand use slightly heavier weight */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand,
+        .logo,
+        .main-header-logo .logo {
+            font-weight: 600;
+        }
+
+        /* Smaller / muted text */
+        small,
+        .text-muted {
+            font-weight: 300;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -69,42 +109,20 @@
     <script src="{{ url('/') }}/assets/js/core/jquery-3.7.1.min.js" data-navigate-track></script>
     <script src="{{ url('/') }}/assets/js/core/popper.min.js" data-navigate-track></script>
     <script src="{{ url('/') }}/assets/js/core/bootstrap.min.js" data-navigate-track></script>
-
-    <!-- jQuery Scrollbar -->
     <script src="{{ url('/') }}/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js" data-navigate-track></script>
-
-    <!-- Chart JS -->
     <script src="{{ url('/') }}/assets/js/plugin/chart.js/chart.min.js" data-navigate-track></script>
-
-    <!-- jQuery Sparkline -->
     <script src="{{ url('/') }}/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js" data-navigate-track></script>
-
-    <!-- Chart Circle -->
     <script src="{{ url('/') }}/assets/js/plugin/chart-circle/circles.min.js" data-navigate-track></script>
-
-    <!-- Datatables -->
     <script src="{{ url('/') }}/assets/js/plugin/datatables/datatables.min.js" data-navigate-track></script>
-
-    <!-- Bootstrap Notify -->
     <script src="{{ url('/') }}/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js" data-navigate-track></script>
-
-    <!-- jQuery Vector Maps -->
     <script src="{{ url('/') }}/assets/js/plugin/jsvectormap/jsvectormap.min.js" data-navigate-track></script>
     <script src="{{ url('/') }}/assets/js/plugin/jsvectormap/world.js" data-navigate-track></script>
-
-    <!-- Sweet Alert -->
     <script src="{{ url('/') }}/assets/js/plugin/sweetalert/sweetalert.min.js" data-navigate-track></script>
-
-    <!-- Kaiadmin JS -->
     <script src="{{ url('/') }}/assets/js/kaiadmin.min.js" data-navigate-track></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js" data-navigate-track></script>
-
-
-
 
     @stack('script')
     @stack('scripts')
     @livewireScripts
-    @livewireChartsScripts
 </body>
 </html>

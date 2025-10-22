@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\GoodsInward;
+use App\Models\DeliveryOrderItem;
+use App\Observers\GoodsInwardObserver;
+use App\Observers\DeliveryOrderItemObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Register model observers that update stock safely
+        GoodsInward::observe(GoodsInwardObserver::class);
+        DeliveryOrderItem::observe(DeliveryOrderItemObserver::class);
     }
 }

@@ -18,8 +18,8 @@ new class extends Component {
         <div class="sidebar-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-                <a href="#" class="logo">
-                    <img src="{{ url('/') }}/assets/img/logo/koltim-2.png" alt="kolaka timur" height="30" />
+                <a href="#" class="logo text-white">
+                    MyApp
                 </a>
                 <div class="nav-toggle">
                     <button class="btn btn-toggle toggle-sidebar">
@@ -50,6 +50,12 @@ new class extends Component {
                         </span>
                         <h4 class="text-section">Masters</h4>
                     </li>
+                    <li class="nav-item {{ Route::is('customers.index') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('customers.index') }}" >
+                            <i class="fas fa-address-book"></i>
+                            <p>Manajemen Customers</p>
+                        </a>
+                    </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
@@ -58,19 +64,18 @@ new class extends Component {
                     </li>
                     @if(auth()->user()->role == 'admin')
                     <li class="nav-item {{ Route::is('admin.manajemen-user') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.manajemen-user') }}" wire:navigate>
+                        <a class="nav-link" href="{{ route('admin.manajemen-user') }}" >
                             <i class="fas fa-users"></i>
                             <p>Manajemen User</p>
                         </a>
                     </li>
                     @endif
                     <li class="nav-item {{ Route::is('profil') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('profil') }}" wire:navigate>
+                        <a class="nav-link" href="{{ route('profil') }}" >
                             <i class="fas fa-user"></i>
                             <p>Profil</p>
                         </a>
                     </li>
-
 
                     <br>
                     <div class="px-4">
