@@ -30,6 +30,9 @@
         button,
         input,
         select,
+        table,
+        td,
+        th,
         textarea {
             font-family: var(--ui-font) !important;
         }
@@ -58,6 +61,15 @@
         .text-muted {
             font-weight: 300;
         }
+
+        /* table font */
+        table,
+        th,
+        td {
+            font-family: var(--ui-font) !important  ;
+        }
+
+
     </style>
 </head>
 <body>

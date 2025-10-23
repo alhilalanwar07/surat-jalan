@@ -16,4 +16,9 @@ Route::middleware('auth')->group(function () {
     Route::get('customers', function () {
         return view('customers.index');
     })->name('customers.index');
+    
+    // Items management (Volt Livewire component)
+    Route::get('/items', function(){
+        return view('items.index');
+    })->name('items.index');
 });

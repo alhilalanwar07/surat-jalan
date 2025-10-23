@@ -56,6 +56,12 @@ new class extends Component {
                             <p>Manajemen Customers</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ Route::is('items.index') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('items.index') }}" >
+                            <i class="fas fa-boxes"></i>
+                            <p>Manajemen Items</p>
+                        </a>
+                    </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>
