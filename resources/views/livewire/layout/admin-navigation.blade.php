@@ -74,6 +74,18 @@ new class extends Component {
                             <p>Pergerakan Stok</p>
                         </a>
                     </li>
+                    <li class="nav-item {{ Route::is('goods.inwards.index') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('goods.inwards.index') }}" >
+                            <i class="fas fa-truck-loading"></i>
+                            <p>Barang Masuk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Route::is('delivery.orders.index') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('delivery.orders.index') }}" >
+                            <i class="fas fa-truck"></i>
+                            <p>Surat Jalan</p>
+                        </a>
+                    </li>
                     <li class="nav-section">
                         <span class="sidebar-mini-icon">
                             <i class="fa fa-ellipsis-h"></i>

@@ -22,7 +22,7 @@ class StockService
             throw new RuntimeException('Quantity must be greater than zero');
         }
 
-        return DB::transaction(function () use ($itemId, $qty) {
+    return DB::transaction(function () use ($itemId, $qty, $referenceTable, $referenceId, $note) {
             // lock the row for update to avoid race conditions
             $item = Item::where('id', $itemId)->lockForUpdate()->firstOrFail();
             $item->stok = $item->stok + $qty;
@@ -32,10 +32,10 @@ class StockService
                 'item_id' => $item->id,
                 'qty' => $qty,
                 'movement_type' => 'in',
-                'reference_table' => null,
-                'reference_id' => null,
+                'reference_table' => $referenceTable,
+                'reference_id' => $referenceId,
                 'user_id' => Auth::id(),
-                'note' => null,
+                'note' => $note,
             ]);
 
             return $item;
@@ -54,7 +54,7 @@ class StockService
             throw new RuntimeException('Quantity must be greater than zero');
         }
 
-        return DB::transaction(function () use ($itemId, $qty) {
+    return DB::transaction(function () use ($itemId, $qty, $referenceTable, $referenceId, $note) {
             $item = Item::where('id', $itemId)->lockForUpdate()->firstOrFail();
             if ($item->stok < $qty) {
                 throw new RuntimeException('Insufficient stock for item ID ' . $itemId);
@@ -66,10 +66,10 @@ class StockService
                 'item_id' => $item->id,
                 'qty' => $qty,
                 'movement_type' => 'out',
-                'reference_table' => null,
-                'reference_id' => null,
+                'reference_table' => $referenceTable,
+                'reference_id' => $referenceId,
                 'user_id' => Auth::id(),
-                'note' => null,
+                'note' => $note,
             ]);
 
             return $item;

@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('delivery_orders', function (Blueprint $table) {
@@ -24,7 +21,7 @@ return new class extends Migration
             $table->string('alokasi')->nullable(); // Field tambahan
             $table->string('dokumentasi')->nullable(); // Field tambahan (path file)
             $table->timestamps();
-            // optional: $table->softDeletes();
+            $table->softDeletes();
         });
     }
 

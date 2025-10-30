@@ -16,27 +16,41 @@ class GoodsInwardObserver
 
     public function created(GoodsInward $goodsInward): void
     {
-        // When goods are received, increase the stock
-        $this->stockService->increase($goodsInward->item_id, $goodsInward->jumlah);
+        // When a goods inward with multiple items is created, increase the stock for each line
+        if ($goodsInward->relationLoaded('items')) {
+            $lines = $goodsInward->items;
+        } else {
+            $lines = $goodsInward->items()->get();
+        }
+
+        foreach ($lines as $line) {
+            // guard: ensure we have an item id and jumlah
+            $itemId = $line->item_id ?? null;
+            $qty = isset($line->jumlah) ? (int) $line->jumlah : null;
+            if ($itemId && $qty > 0) {
+                $this->stockService->increase($itemId, $qty, 'goods_inwards', $goodsInward->id, 'Penerimaan barang (observer)');
+            }
+        }
     }
 
     public function updated(GoodsInward $goodsInward): void
     {
-        // If jumlah changed, apply the delta to stock
-        $original = $goodsInward->getOriginal('jumlah') ?? 0;
-        $current = $goodsInward->jumlah;
-        $delta = $current - $original;
-        if ($delta > 0) {
-            $this->stockService->increase($goodsInward->item_id, $delta);
-        } elseif ($delta < 0) {
-            $this->stockService->decrease($goodsInward->item_id, abs($delta));
-        }
+        // For multi-line goods inwards we don't attempt to diff here.
+        // If business logic requires adjusting stock on edits, implement a diff between
+        // original lines and current lines. For now, no-op to avoid double-applying stock changes.
+        return;
     }
 
     public function deleted(GoodsInward $goodsInward): void
     {
-        // If a goods_inward record is deleted, rollback the stock increase
-        // (depending on business logic you may instead prevent delete or soft delete)
-        $this->stockService->decrease($goodsInward->item_id, $goodsInward->jumlah);
+        // If a goods_inward record is deleted, rollback the stock increase for each line
+        $lines = $goodsInward->items()->get();
+        foreach ($lines as $line) {
+            $itemId = $line->item_id ?? null;
+            $qty = isset($line->jumlah) ? (int) $line->jumlah : null;
+            if ($itemId && $qty > 0) {
+                $this->stockService->decrease($itemId, $qty, 'goods_inwards', $goodsInward->id, 'Rollback penerimaan (observer)');
+            }
+        }
     }
 }

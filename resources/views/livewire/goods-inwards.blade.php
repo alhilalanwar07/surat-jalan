@@ -6,9 +6,11 @@ use App\Models\Item;
 use App\Services\StockService;
 use Livewire\Volt\Component;
 use Illuminate\Support\Facades\DB;
+use Livewire\WithFileUploads;
 
 new class extends Component {
 
+    use WithFileUploads;
   public $nomor;
   public $tanggal;
   public $note;

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('jumlah');
             $table->text('keterangan')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('delivery_order_id', 'fk_delivery_order_items_delivery_order_id')->references('id')->on('delivery_orders')->onDelete('cascade');
             $table->foreign('item_id', 'fk_delivery_order_items_item_id')->references('id')->on('items')->onDelete('cascade');

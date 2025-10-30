@@ -35,5 +35,10 @@ Route::middleware('auth')->group(function () {
     // Goods Inwards (Penerimaan)
     Route::get('/goods-inwards', function(){
         return view('goods-inwards.index');
-    })->name('goods-inwards.index');
+    })->name('goods.inwards.index');
+
+    // Delivery Orders (Surat Jalan)
+    Route::get('/delivery-orders', function(){
+        return view('delivery-orders.index');
+    })->name('delivery.orders.index');
 });

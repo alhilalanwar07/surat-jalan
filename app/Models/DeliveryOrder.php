@@ -14,8 +14,11 @@ class DeliveryOrder extends Model
 
     protected $fillable = ['nomor_sj', 'tanggal', 'purpose_id', 'nomor_po', 'nama_sopir', 'nomor_kendaraan', 'purpose', 'alokasi', 'dokumentasi'];
 
+
+    // ensure confirmed_at is cast to datetime so ->format() is available in views
     protected $casts = [
         'tanggal' => 'date',
+        'confirmed_at' => 'datetime',
     ];
 
     public function purpose(): BelongsTo
