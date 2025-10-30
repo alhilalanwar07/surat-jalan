@@ -3,22 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class GoodsInward extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['item_id', 'jumlah', 'tanggal', 'keterangan'];
+    protected $fillable = ['nomor', 'tanggal', 'attachments', 'note'];
 
     protected $casts = [
-        'jumlah' => 'integer',
         'tanggal' => 'date',
+        'attachments' => 'array',
     ];
 
-    public function item(): BelongsTo
+    public function items(): HasMany
     {
-        return $this->belongsTo(Item::class);
+        return $this->hasMany(GoodsInwardItem::class);
     }
 }
+

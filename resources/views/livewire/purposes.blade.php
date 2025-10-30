@@ -13,7 +13,7 @@ new class extends Component {
 
     public function with(): array
     {
-    $query = Purpose::query();
+        $query = Purpose::query();
         if (!empty($this->search)) {
             $query->where(function ($q) {
                 $q->where('nama', 'like', '%' . $this->search . '%')
@@ -27,7 +27,7 @@ new class extends Component {
         ];
     }
 
-    // create / edit tujuan
+    // create / edit purpose
     public $name, $alamat, $no_telepon, $editingId;
 
     public function rules(): array
@@ -63,7 +63,6 @@ new class extends Component {
 
             $this->resetForm();
             $this->resetPage();
-            // after saving, reset editing mode back to add
             $this->editingId = null;
         } catch (\Exception $e) {
             $this->dispatch('errorAlertToast', $e->getMessage());
@@ -84,8 +83,6 @@ new class extends Component {
         $this->editingId = null;
         $this->resetForm();
     }
-
-    // keep resetForm to reset inputs and editing mode
 
     public function delete($id)
     {
@@ -185,15 +182,15 @@ new class extends Component {
                             </thead>
                             <tbody>
                                 @php $no = ($purposes->currentPage() - 1) * $purposes->perPage() + 1; @endphp
-                                @foreach($purposes as $customer)
+                                @foreach($purposes as $purpose)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $customer->nama }}</td>
-                                    <td>{{ $customer->alamat }}</td>
-                                    <td>{{ $customer->no_telepon }}</td>
+                                    <td>{{ $purpose->nama }}</td>
+                                    <td>{{ $purpose->alamat }}</td>
+                                    <td>{{ $purpose->no_telepon }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-primary m-1" wire:click="openEdit({{ $customer->id }})">Edit</a>
-                                        <button type="button" class="btn btn-sm btn-danger m-1" wire:click="delete({{ $customer->id }})">Delete</button>
+                                        <a href="#" class="btn btn-sm btn-primary m-1" wire:click="openEdit({{ $purpose->id }})">Edit</a>
+                                        <button type="button" class="btn btn-sm btn-danger m-1" wire:click="delete({{ $purpose->id }})">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach

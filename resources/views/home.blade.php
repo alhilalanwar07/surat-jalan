@@ -79,13 +79,13 @@
                                     </svg>
                                 </div>
                                 <div class="d-sm-none">
-                                    <h2 class="h5">Customers</h2>
+                                    <h2 class="h5">Tujuan</h2>
                                     <h3 class="fw-extrabold mb-1">345,678</h3>
                                 </div>
                             </div>
                             <div class="col-12 col-xl-7 px-xl-0">
                                 <div class="d-none d-sm-block">
-                                    <h2 class="h6 text-gray-400 mb-0">Customers</h2>
+                                    <h2 class="h6 text-gray-400 mb-0">Tujuan</h2>
                                     <h3 class="fw-extrabold mb-2">345k</h3>
                                 </div>
                                 <small class="d-flex align-items-center text-gray-500">

@@ -50,10 +50,10 @@ new class extends Component {
                         </span>
                         <h4 class="text-section">Masters</h4>
                     </li>
-                    <li class="nav-item {{ Route::is('customers.index') ? 'active text-info' : '' }}">
-                        <a class="nav-link" href="{{ route('customers.index') }}" >
+                    <li class="nav-item {{ Route::is('purposes.index') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('purposes.index') }}" >
                             <i class="fas fa-address-book"></i>
-                            <p>Manajemen Customers</p>
+                            <p>Manajemen Tujuan</p>
                         </a>
                     </li>
                     <li class="nav-item {{ Route::is('items.index') ? 'active text-info' : '' }}">
@@ -67,6 +67,18 @@ new class extends Component {
                             <i class="fa fa-ellipsis-h"></i>
                         </span>
                         <h4 class="text-section">Proses</h4>
+                    </li>
+                    <li class="nav-item {{ Route::is('stock.movements.index') ? 'active text-info' : '' }}">
+                        <a class="nav-link" href="{{ route('stock.movements.index') }}" >
+                            <i class="fas fa-exchange-alt"></i>
+                            <p>Pergerakan Stok</p>
+                        </a>
+                    </li>
+                    <li class="nav-section">
+                        <span class="sidebar-mini-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <h4 class="text-section">Pengaturan</h4>
                     </li>
                     @if(auth()->user()->role == 'admin')
                     <li class="nav-item {{ Route::is('admin.manajemen-user') ? 'active text-info' : '' }}">

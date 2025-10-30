@@ -30,10 +30,10 @@ TODO ini adalah roadmap terperinci dan terprioritas, mulai dari fitur operasiona
 **Tujuan:** Merekam setiap perubahan stok untuk keterlacakan (traceability) dan pelaporan.
 
 **Langkah-langkah:**
-- [ ] Buat migrasi `stock_movements` (item_id, qty, movement_type, reference_table, reference_id, user_id, note, created_at).
-- [ ] Buat model `StockMovement` dan relasi ke `Item`.
-- [ ] Update `StockService` untuk menyisipkan catatan pergerakan saat menambah/mengurangi.
-- [ ] Buat halaman Volt untuk melihat pergerakan per item dan pergerakan global terbaru.
+- [x] Buat migrasi `stock_movements` (item_id, qty, movement_type, reference_table, reference_id, user_id, note, created_at).
+- [x] Buat model `StockMovement` dan relasi ke `Item`.
+- [x] Update `StockService` untuk menyisipkan catatan pergerakan saat menambah/mengurangi.
+- [x] Buat halaman Volt untuk melihat pergerakan per item dan pergerakan global terbaru.
 - [ ] Tambahkan tes untuk memastikan pergerakan dicatat untuk alur GI dan DO.
 
 **Kriteria Penerimaan:**
@@ -51,6 +51,15 @@ TODO ini adalah roadmap terperinci dan terprioritas, mulai dari fitur operasiona
 - [ ] Bangun halaman form Volt untuk membuat GI dengan baris dinamis (pilih item, jumlah, harga (opsional), catatan).
 - [ ] Dukung lampiran file (simpan di `storage/app/public`).
 - [ ] Saat simpan: buat GI + baris GI, panggil `StockService::increase()` per item dan buat entri pergerakan stok.
+- [ ] Tambahkan validasi dan tes.
+
+**Status saat ini:** Sedang dikerjakan
+
+**Langkah-langkah (progress):**
+- [x] Buat migrasi/model: `goods_inwards` + `goods_inward_items`.
+- [x] Bangun halaman form Volt untuk membuat GI dengan baris dinamis (pilih item, jumlah, harga (opsional), catatan).
+- [x] Dukung lampiran file (disimpan di `storage/app/public`).
+- [x] Saat simpan: buat GI + baris GI, panggil `StockService::increase()` per item dan buat entri pergerakan stok.
 - [ ] Tambahkan validasi dan tes.
 
 **Kriteria Penerimaan:**
@@ -82,7 +91,7 @@ TODO ini adalah roadmap terperinci dan terprioritas, mulai dari fitur operasiona
 
 **Langkah-langkah:**
 - [ ] Buat route GET /dashboard dan view Volt `resources/views/dashboard.blade.php`.
-- [ ] Implementasikan widget Livewire/Volt kecil untuk: total item, total pelanggan, total nilai stok, jumlah stok menipis, DO tertunda, pergerakan stok terbaru.
+	- [ ] Implementasikan widget Livewire/Volt kecil untuk: total item, total tujuan, total nilai stok, jumlah stok menipis, DO tertunda, pergerakan stok terbaru.
 - [ ] Tindakan cepat: tombol untuk membuat DO atau GI (tautan ke form).
 - [ ] Tambahkan query yang di-cache untuk metrik berat (gunakan cache dengan TTL singkat).
 
@@ -93,32 +102,23 @@ TODO ini adalah roadmap terperinci dan terprioritas, mulai dari fitur operasiona
 
 ---
 
-## - [ ] 6. Peningkatan Pelanggan (Prioritas: Medium)
-**Tujuan:** Menambah data pelanggan lebih dalam (beberapa alamat, narahubung) dan impor/ekspor.
+## - [ ] 6. Peningkatan Tujuan (Prioritas: Medium)
+**Tujuan:** Menambah data tujuan lebih dalam (beberapa alamat, narahubung) dan impor/ekspor.
 
 **Langkah-langkah:**
-- [ ] Tambah migrasi/model `customer_addresses` dan `customer_contacts`.
-- [ ] Update UI Volt Pelanggan untuk mengelola alamat & kontak (inline atau via modal).
-- [ ] Implementasikan impor/ekspor CSV untuk pelanggan dan alamat.
+- [ ] Tambah migrasi/model `purpose_addresses` dan `purpose_contacts` (opsional jika diperlukan).
+- [ ] Update UI Volt Tujuan untuk mengelola alamat & kontak (inline atau via modal).
+- [ ] Implementasikan impor/ekspor CSV untuk tujuan dan alamat.
 
 **Kriteria Penerimaan:**
-- [ ] Pelanggan dapat memiliki banyak alamat & kontak; impor memetakan kolom dengan benar.
+- [ ] Tujuan dapat memiliki banyak alamat & kontak; impor memetakan kolom dengan benar.
 
 **Perkiraan upaya:** Medium
 
 ---
 
-## - [ ] 7. CRUD Pemasok / Vendor (Prioritas: Medium)
-**Tujuan:** Mengelola pemasok untuk alur Penerimaan Barang (GI) dan PO.
-
-**Langkah-langkah:**
-- [ ] Buat migrasi/model `suppliers` dan halaman CRUD Volt dasar.
-- [ ] Izinkan memilih pemasok di form GI.
-
-**Kriteria Penerimaan:**
-- [ ] Pemasok dapat dikelola dan dipilih dalam alur GI.
-
-**Perkiraan upaya:** Kecil
+## - [ ] 7. (Removed) Pemasok / Vendor
+Pemasok tidak digunakan dalam proyek ini sesuai permintaan — bagian ini dihapus.
 
 ---
 

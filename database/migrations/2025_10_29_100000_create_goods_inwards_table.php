@@ -6,26 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('goods_inwards', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('item_id')->index();
-            $table->unsignedInteger('jumlah');
+            $table->string('nomor')->nullable()->unique();
             $table->date('tanggal')->index();
-            $table->text('keterangan')->nullable();
+            $table->json('attachments')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
-
-            $table->foreign('item_id', 'fk_goods_inwards_item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('goods_inwards');

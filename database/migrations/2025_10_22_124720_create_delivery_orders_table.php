@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nomor_sj')->unique();
             $table->date('tanggal')->index();
-            $table->unsignedBigInteger('customer_id')->index();
-            $table->foreign('customer_id', 'fk_delivery_orders_customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->unsignedBigInteger('purpose_id')->index();
+            $table->foreign('purpose_id', 'fk_delivery_orders_purpose_id')->references('id')->on('purposes')->onDelete('cascade');
             $table->string('nomor_po')->nullable()->index();
             $table->string('nama_sopir')->nullable();
             $table->string('nomor_kendaraan')->nullable();
